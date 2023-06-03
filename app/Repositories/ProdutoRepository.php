@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use Exception;
 use App\Models\Produto;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -11,13 +12,13 @@ class ProdutoRepository
     {
         try {
             return Produto::all();
-        } catch (\Exception $e) {
-            throw new \Exception("Falha ao recuperar os produtos: " . $e->getMessage());
+        } catch (Exception $error) {
+            throw new Exception("Falha ao recuperar os produtos: " . $e->getMessage());
         }
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function find($id)
     {
@@ -29,13 +30,13 @@ class ProdutoRepository
             }
 
             return $produto;
-        } catch (\Exception $e) {
-            throw new \Exception("Falha ao recuperar produto com ID {$id}: " . $e->getMessage());
+        } catch (Exception $error) {
+            throw new Exception("Falha ao recuperar produto com ID {$id}: " . $e->getMessage());
         }
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function createOrUpdate(array $data, $id = 0)
     {
@@ -48,13 +49,13 @@ class ProdutoRepository
 
             $produto->update($data);
             return $produto;
-        } catch (\Exception $e) {
-            throw new \Exception("Falha ao criar ou atualizar produto com ID {$id}: " . $e->getMessage());
+        } catch (Exception $error) {
+            throw new Exception("Falha ao criar ou atualizar produto com ID {$id}: " . $e->getMessage());
         }
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function update($id, array $data)
     {
@@ -67,13 +68,13 @@ class ProdutoRepository
 
             $produto->update($data);
             return $produto;
-        } catch (\Exception $e) {
-            throw new \Exception("Falha ao atualizar produto com ID {$id}: " . $e->getMessage());
+        } catch (Exception $error) {
+            throw new Exception("Falha ao atualizar produto com ID {$id}: " . $e->getMessage());
         }
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function delete($id)
     {
@@ -87,8 +88,8 @@ class ProdutoRepository
             $produto->delete();
 
             return true;
-        } catch (\Exception $e) {
-            throw new \Exception("Falha ao excluir produto com ID {$id}: " . $e->getMessage());
+        } catch (Exception $error) {
+            throw new Exception("Falha ao excluir produto com ID {$id}: " . $e->getMessage());
         }
     }
     public function searchByNameAndCategory($name, $category)
@@ -97,7 +98,7 @@ class ProdutoRepository
             return Produto::where('name', 'like', "%{$name}%")
                 ->where('category', 'like', "%{$category}%")
                 ->get();
-        } catch (\Exception $e) {
+        } catch (Exception $error) {
             return $e->getMessage();
         }
     }
@@ -106,7 +107,7 @@ class ProdutoRepository
     {
         try {
             return Produto::where('category', 'like', "%{$category}%")->get();
-        } catch (\Exception $e) {
+        } catch (Exception $error) {
             return $e->getMessage();
         }
     }
@@ -121,7 +122,7 @@ class ProdutoRepository
                 return Produto::whereNull('image_url')
                     ->get();
             }
-        } catch (\Exception $e) {
+        } catch (Exception $error) {
 
             return $e->getMessage();
         }
