@@ -29,4 +29,6 @@ Route::get('info', function () {
 });
 
 Route::get('all', [ProdutoController::class, 'index']);
-Route::get('show/{id}', [ProdutoController::class, 'show']);
+Route::get('getId/{id}', [ProdutoController::class, 'show']);
+Route::post('create', [ProdutoController::class, 'store']);
+
