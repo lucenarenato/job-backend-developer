@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProdutoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,3 +27,5 @@ Route::get('info', function () {
 
     return response()->json($app_info);
 });
+
+Route::get('all', [ProdutoController::class, 'index']);
