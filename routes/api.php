@@ -29,3 +29,4 @@ Route::get('info', function () {
 });
 
 Route::get('all', [ProdutoController::class, 'index']);
+Route::get('show/{id}', [ProdutoController::class, 'show']);
