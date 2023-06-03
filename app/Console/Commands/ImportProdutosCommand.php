@@ -48,8 +48,8 @@ class ImportProdutosCommand extends Command
                 $progressBar->advance();
                 $produto = [
                     'name' => $value['title'],
-                    'description' => $value['description'],
                     'price' => $value['price'],
+                    'description' => $value['description'],
                     'category' => $value['category'],
                     'image_url' => $value['image']
                 ];
