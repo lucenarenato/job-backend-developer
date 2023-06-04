@@ -39,6 +39,7 @@ Execute os comandos abaixo dentro do container:
 $ composer install
 $ php artisan key:generate
 $ php artisan migrate
+$ php artisan passport:install
 
 ```
 
@@ -108,4 +109,7 @@ Utilize a seguinte API para importar os produtos: https://fakestoreapi.com/docs
 
 ## Json do Postman
 `back-end-adoorei.postman_collection.json`
+`
+## Para testar login, execute install passport.
+`php artisan passport:install`
 `
