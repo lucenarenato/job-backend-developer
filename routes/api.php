@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PassportController;
 use App\Http\Controllers\ProdutoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -36,4 +37,13 @@ Route::prefix('produto')->group(function () {
     Route::post('search/nameCategory', [ProdutoController::class, 'searchByNameCategory']);
     Route::get('search/{category}', [ProdutoController::class, 'searchByCategory']);
     Route::post('search/image', [ProdutoController::class, 'searchByUrlImage']);
+});
+
+// Plus
+Route::post('login', [PassportController::class, 'login']);
+Route::post('user/register', [PassportController::class, 'register']);
+Route::post('/logout', [PassportController::class, 'logout']);
+
+Route::group(['middleware' => ['cors', 'json.response']], function () {
+    //
 });

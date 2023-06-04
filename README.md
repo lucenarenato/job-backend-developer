@@ -104,3 +104,8 @@ Utilize a seguinte API para importar os produtos: https://fakestoreapi.com/docs
 
 
 É isso!. Ficamos muito felizes com a sua aplicação para esse Teste. Estamos à sua disposição para tirar qualquer dúvida. Boa sorte! 😉
+
+
+## Json do Postman
+`back-end-adoorei.postman_collection.json`
+`
