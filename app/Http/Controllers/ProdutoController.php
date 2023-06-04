@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdateProdutoRequest;
 use App\Http\Requests\StoreProdutoRequest;
 use App\Repositories\ProdutoRepository;
-use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Exception;
 
@@ -49,6 +49,16 @@ class ProdutoController extends Controller
     {
         try {
             return response()->json($this->produtoRepository->createOrUpdate($request->all(), $id), Response::HTTP_OK);
+        } catch (Exception $error) {
+            return response()->json(['error' => $error->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    public function destroy($id)
+    {
+        try {
+            $this->produtoRepository->delete($id);
+            return new JsonResponse([], Response::HTTP_NO_CONTENT);
         } catch (Exception $error) {
             return response()->json(['error' => $error->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
         }

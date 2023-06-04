@@ -33,4 +33,5 @@ Route::prefix('produto')->group(function () {
     Route::get('getId/{id}', [ProdutoController::class, 'show']);
     Route::post('create', [ProdutoController::class, 'store']);
     Route::put('update/{id}', [ProdutoController::class, 'update']);
+    Route::delete('delete/{id}', [ProdutoController::class, 'destroy']);
 });
