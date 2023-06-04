@@ -28,7 +28,9 @@ Route::get('info', function () {
     return response()->json($app_info);
 });
 
-Route::get('all', [ProdutoController::class, 'index']);
-Route::get('getId/{id}', [ProdutoController::class, 'show']);
-Route::post('create', [ProdutoController::class, 'store']);
-
+Route::prefix('produto')->group(function () {
+    Route::get('all', [ProdutoController::class, 'index']);
+    Route::get('getId/{id}', [ProdutoController::class, 'show']);
+    Route::post('create', [ProdutoController::class, 'store']);
+    Route::put('update/{id}', [ProdutoController::class, 'update']);
+});
