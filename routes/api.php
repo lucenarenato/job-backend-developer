@@ -24,7 +24,6 @@ Route::get('info', function () {
         'server' => getenv('APP_NAME'),
         'version' => getenv('APP_VERSION')
     ];
-
     return response()->json($app_info);
 });
 
@@ -34,4 +33,7 @@ Route::prefix('produto')->group(function () {
     Route::post('create', [ProdutoController::class, 'store']);
     Route::put('update/{id}', [ProdutoController::class, 'update']);
     Route::delete('delete/{id}', [ProdutoController::class, 'destroy']);
+    Route::post('search/nameCategory', [ProdutoController::class, 'searchByNameCategory']);
+    Route::get('search/{category}', [ProdutoController::class, 'searchByCategory']);
+    Route::post('search/image', [ProdutoController::class, 'searchByUrlImage']);
 });

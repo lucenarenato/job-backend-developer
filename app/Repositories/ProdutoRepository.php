@@ -92,7 +92,7 @@ class ProdutoRepository
             throw new Exception("Falha ao excluir produto com ID {$id}: " . $error->getMessage());
         }
     }
-    public function searchByNameAndCategory($name, $category)
+    public function searchByNameCategory($name, $category)
     {
         try {
             return Produto::where('name', 'like', "%{$name}%")
@@ -112,10 +112,10 @@ class ProdutoRepository
         }
     }
 
-    public function searchByImage($hasImage)
+    public function searchByUrlImage($urlImage)
     {
         try {
-            if ($hasImage) {
+            if ($urlImage) {
                 return Produto::whereNotNull('image_url')
                     ->get();
             } else {
@@ -123,7 +123,6 @@ class ProdutoRepository
                     ->get();
             }
         } catch (Exception $error) {
-
             return $error->getMessage();
         }
     }
